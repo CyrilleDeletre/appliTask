@@ -12,6 +12,11 @@
 <?php
 include 'header.php';
 
+// Génération du jeton CSRF
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
 if (isset($_GET['page']) && $_GET['page'] == "task") {
     // Création de tâche
 ?>
@@ -20,7 +25,7 @@ if (isset($_GET['page']) && $_GET['page'] == "task") {
     <form method="POST">
         <input type="text" name="task_name">
         <input type="submit" name="add_task" value="Ajouter une tâche">
-        <!-- Utilisation d'un jeton CSRF ici -->
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
     </form>
 
 <?php
@@ -37,6 +42,7 @@ if (isset($_GET['page']) && $_GET['page'] == "task") {
         // Suppression de la tâche
         echo '<form method="POST" style="display:inline;">';
         echo '<input type="hidden" name="task_id" value="' . htmlspecialchars($value['id_task']) . '">';
+        echo '<input type="hidden" name="csrf_token" value="' . htmlspecialchars($_SESSION['csrf_token']) . '">';
         echo '<input type="submit" name="delete_task" value="Supprimer">';
         echo '</form><br>';
 
