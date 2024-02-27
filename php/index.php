@@ -3,7 +3,6 @@
 require_once "controllers/Controller.php";
 
 $controller = new Controller;
-
 $controller->index();
 
 if (!isset($_GET['page'])) {
