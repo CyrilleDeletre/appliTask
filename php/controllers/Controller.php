@@ -25,7 +25,6 @@ class Controller {
             echo "Tâche supprimée avec succès";
         }
 
-
     function updateTasks(){
             $conn = new BddConnect;
             $conn->updateTask($_POST['task_id'], $_POST['new_task_name']);
