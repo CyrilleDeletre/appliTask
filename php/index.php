@@ -7,7 +7,7 @@ $controller = new Controller;
 $controller->index();
 
 if (!isset($_GET['page'])) {
-        echo "<h1>Bienvenue sur mon site</h1>";
+        echo "<h1>Bienvenue sur mon site de gestion des tâches</h1>";
 }
 
 if (isset($_POST['submit']) && !empty($_POST['task'])) {
