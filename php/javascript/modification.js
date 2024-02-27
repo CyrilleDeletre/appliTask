@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
             editInput.style.display = 'inline-block';
             editInput.focus();
 
+            // Si on modifie et qu'on l'on sort du focus, cela va POST la modification
             editInput.addEventListener('blur', function() {
                 const newTaskName = editInput.value.trim();
                 if (newTaskName !== '') {

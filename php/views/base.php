@@ -9,46 +9,46 @@
 </head>
 
 <body>
-    <?php
-    include 'header.php';
+<?php
+include 'header.php';
 
-    if (isset($_GET['page']) && $_GET['page'] == "task") {
+if (isset($_GET['page']) && $_GET['page'] == "task") {
+    // Création de tâche
+?>
+    <h1>Mes Tâches</h1>
+
+    <form method="POST">
+        <input type="text" name="task_name">
+        <input type="submit" name="add_task" value="Ajouter une tâche">
+        <!-- Utilisation d'un jeton CSRF ici -->
+    </form>
+
+<?php
+    $controller = new Controller;
+    $tasks = $controller->getTasks();
+
+    foreach ($tasks as $value) {
+        // Tâche container
+        echo '<div class="task-container">';
         
-        // Create
-    ?>
-        <h1>Mes Tâches</h1>
+        // Lecture de la tâche
+        echo '<p class="task" data-task-id="' . htmlspecialchars($value['id_task']) . '">' . htmlspecialchars($value['name_task']) . '</p>';
 
-        <form method="POST">
-            <input type="text" name="task_name">
-            <input type="submit" name="add_task" value="Ajouter une tâche">
-        </form>
+        // Suppression de la tâche
+        echo '<form method="POST" style="display:inline;">';
+        echo '<input type="hidden" name="task_id" value="' . htmlspecialchars($value['id_task']) . '">';
+        echo '<input type="submit" name="delete_task" value="Supprimer">';
+        echo '</form><br>';
 
-    <?php
-
-        $controller = new Controller;
-        $tasks = $controller->getTasks();
-
-        foreach ($tasks as $value) {
-            // Task container
-            echo '<div class="task-container">';
-            
-            // Read
-            echo '<p class="task" data-task-id="' . $value['id_task'] . '">' . $value['name_task'] . '</p>';
-
-            // Delete
-            echo '<form method="POST" style="display:inline;">';
-            echo '<input type="hidden" name="task_id" value="' . $value['id_task'] . '">';
-            echo '<input type="submit" name="delete_task" value="Supprimer">';
-            echo '</form><br>';
-
-            // Modify
-            echo '<button class="edit-task" data-task-id="' . $value['id_task'] . '">Modifier</button>';
-            echo '<input type="text" class="edit-input" style="display: none;" data-task-id="' . $value['id_task'] . '" value="' . $value['name_task'] . '">';
-            
-            echo '</div>';
-        }
+        // Modification de la tâche
+        echo '<button class="edit-task" data-task-id="' . htmlspecialchars($value['id_task']) . '">Modifier</button>';
+        echo '<input type="text" class="edit-input" style="display: none;" data-task-id="' . htmlspecialchars($value['id_task']) . '" value="' . htmlspecialchars($value['name_task']) . '">';
+        
+        echo '</div>';
     }
-    ?>
+}
+?>
+
 </body>
 
 </html>

@@ -19,7 +19,7 @@ class Controller
     function addTasks()
     {
         $conn = new BddConnect();
-        $conn->insertTask($_POST['task']);
+        $conn->insertTask($_POST['task_name']);
         echo "Tâche ajoutée avec succès";
     }
 
