@@ -17,7 +17,6 @@ if (isset($_POST['delete_task'])) {
         $controller->deleteTasks();
 }
 
-
 if (isset($_POST['update_task'])) {
         $controller->updateTask();
 }

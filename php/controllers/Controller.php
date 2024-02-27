@@ -16,11 +16,8 @@ class Controller {
 
     function addTask() {
         if (isset($_POST['submit']) && !empty($_POST['task'])) {
-            // Validation des données d'entrée utilisateur
             $task = $_POST['task'];
-            // Création d'une instance de BddConnect
             $bdd = new BddConnect();
-            // Appel de la fonction insertTask avec la tâche validée
             $bdd->insertTask($task);
         }
     }

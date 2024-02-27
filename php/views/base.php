@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestionnaire de tâche</title>
+    <script src="../javascript/modification.js"></script>
 </head>
 
 <body>
@@ -24,17 +25,15 @@
                 $controller = new Controller;
                 $tasks = $controller->getTasks();
                 foreach ($tasks as $value) {
-                    echo '<p class="id' . $value['id_task'] . '">' . $value['name_task'] . '</p>';
+                    echo '<div class="task-container">';
+                    echo '<p class="task" data-task-id="' . $value['id_task'] . '">' . $value['name_task'] . '</p>';
                     echo '<form method="POST" style="display:inline;">';
                     echo '<input type="hidden" name="task_id" value="' . $value['id_task'] . '">';
                     echo '<input type="submit" name="delete_task" value="Supprimer">';
                     echo '</form><br>';
-            
-                    echo '<form method="POST" style="display:inline;">';
-                    echo '<input type="hidden" name="task_id" value="' . $value['id_task'] . '">';
-                    echo '<input type="text" name="new_task_name" placeholder="Nouveau nom de la tâche">';
-                    echo '<input type="submit" name="update_task" value="Modifier">';
-                    echo '</form><br>';
+                    echo '<button class="edit-task" data-task-id="' . $value['id_task'] . '">Modifier</button>';
+                    echo '<input type="text" class="edit-input" style="display: none;" data-task-id="' . $value['id_task'] . '" value="' . $value['name_task'] . '">';
+                    echo '</div>';
                 }
         }
         
@@ -42,12 +41,3 @@
     ?>
 </body>
 </html>
-
-    <!-- <script>
-        const modifier = document.querySelector('.test');
-        modifier.addEventListener('click', (event) => {
-            event.preventDefault();
-            const id = document.querySelector('.id')
-            id.style.display = "none";
-        })
-    </script> -->
