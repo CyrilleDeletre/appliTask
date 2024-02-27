@@ -9,21 +9,20 @@ class Controller {
         require_once "views/base.php";
     }
 
-    function affichageTasks(){
+    function getTasks(){
         $conn = new BddConnect;
-        $data = $conn->readTask();
-        
-        foreach ($data as $value) {
-            echo '<p class="id' . $value['id_task'] . '">' . $value['name_task'] . '</p>';
-            echo '<form method="POST" style="display:inline;">';
-            echo '<input type="hidden" name="task_id" value="' . $value['id_task'] . '">';
-            echo '<input type="submit" name="delete_task" value="Supprimer">';
-            echo '</form><br>';
-        }
+        return $conn->readTask();
     }
-    function addTask(){
-            $conn = new BddConnect;
-            $conn->insertTask($_POST['task']);
+
+    function addTask() {
+        if (isset($_POST['submit']) && !empty($_POST['task'])) {
+            // Validation des données d'entrée utilisateur
+            $task = $_POST['task'];
+            // Création d'une instance de BddConnect
+            $bdd = new BddConnect();
+            // Appel de la fonction insertTask avec la tâche validée
+            $bdd->insertTask($task);
+        }
     }
 
     function deleteTasks(){
@@ -33,6 +32,17 @@ class Controller {
             echo "Tâche supprimée avec succès";
         }
     }
+
+    function updateTask(){
+        if(isset($_POST['update_task']) && !empty($_POST['task_id']) && !empty($_POST['new_task_name'])) {
+            $conn = new BddConnect;
+            $conn->updateTask($_POST['task_id'], $_POST['new_task_name']);
+            echo "Tâche mise à jour avec succès";
+        }
+    }
+
+    
+    
 }
 
 
