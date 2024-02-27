@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     .catch(error => {
                         console.error('Erreur:', error);
                     });
-                } else {
+                } 
+                else {
                     // Réinitialiser l'affichage si le champ est vide
                     taskElement.style.display = 'inline-block';
                     editInput.style.display = 'none';

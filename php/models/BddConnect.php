@@ -43,6 +43,6 @@ class BddConnect{
         $stmt_update->bindParam(':new_task_name', $new_task_name);
         $stmt_update->execute();
     }
-    
 }
+
 ?>

@@ -4,7 +4,6 @@ require_once "models/BddConnect.php";
 
 class Controller {
 
-
     function index(){
         require_once "views/base.php";
     }
@@ -37,10 +36,6 @@ class Controller {
             echo "Tâche mise à jour avec succès";
         }
     }
-
-    
-    
 }
-
 
 ?>

@@ -36,8 +36,6 @@
                     echo '</div>';
                 }
         }
-        
-
     ?>
 </body>
 </html>
