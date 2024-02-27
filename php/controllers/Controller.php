@@ -20,7 +20,6 @@ class Controller {
         }
 
     function deleteTasks(){
-
             $conn = new BddConnect;
             $conn->deleteTask($_POST['task_id']);
             echo "Tâche supprimée avec succès";
@@ -28,7 +27,6 @@ class Controller {
 
 
     function updateTasks(){
-
             $conn = new BddConnect;
             $conn->updateTask($_POST['task_id'], $_POST['new_task_name']);
             echo "Tâche mise à jour avec succès";
