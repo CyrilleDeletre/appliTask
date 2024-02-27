@@ -13,24 +13,24 @@ class Controller {
         return $conn->readTask();
     }
 
-    function addTask() {
-        if (isset($_POST['submit']) && !empty($_POST['task'])) {
-            $task = $_POST['task'];
-            $bdd = new BddConnect();
-            $bdd->insertTask($task);
+    function addTasks() {
+        if (isset($_POST['add_task']) && !empty($_POST['task'])) {
+            $conn = new BddConnect();
+            $conn->insertTask($_POST['task']);
+            echo "Tâche ajoutée avec succès";
         }
     }
 
     function deleteTasks(){
-        if(isset($_POST['delete_task']) && !empty($_POST['task_id'])) {
+        if(isset($_POST['delete_task'])) {
             $conn = new BddConnect;
             $conn->deleteTask($_POST['task_id']);
             echo "Tâche supprimée avec succès";
         }
     }
 
-    function updateTask(){
-        if(isset($_POST['update_task']) && !empty($_POST['task_id']) && !empty($_POST['new_task_name'])) {
+    function updateTasks(){
+        if(isset($_POST['update_task']) && !empty($_POST['new_task_name'])) {
             $conn = new BddConnect;
             $conn->updateTask($_POST['task_id'], $_POST['new_task_name']);
             echo "Tâche mise à jour avec succès";

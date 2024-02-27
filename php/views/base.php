@@ -19,7 +19,7 @@
         
                 <form method="POST">
                         <input type="text" name="task">
-                        <input type="submit" name="submit" value="Ajouter une tâche">
+                        <input type="submit" name="add_task" value="Ajouter une tâche">
                 </form>
         <?php
                 $controller = new Controller;

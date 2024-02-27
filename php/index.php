@@ -11,14 +11,14 @@ if (!isset($_GET['page'])) {
 }
 
 if (isset($_POST['submit']) && !empty($_POST['task'])) {
-        $controller->addTask();
+        $controller->addTasks();
 }
 if (isset($_POST['delete_task'])) {
         $controller->deleteTasks();
 }
 
 if (isset($_POST['update_task'])) {
-        $controller->updateTask();
+        $controller->updateTasks();
 }
 
 ?>
