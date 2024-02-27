@@ -18,7 +18,7 @@
                 <h1>Mes Tâches</h1>
         
                 <form method="POST">
-                        <input type="text" name="task">
+                        <input type="text" name="task_name">
                         <input type="submit" name="add_task" value="Ajouter une tâche">
                 </form>
         <?php

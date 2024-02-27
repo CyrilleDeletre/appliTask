@@ -14,7 +14,7 @@ class Controller {
     }
 
     function addTasks() {
-        if (isset($_POST['add_task']) && !empty($_POST['task'])) {
+        if (isset($_POST['add_task']) && !empty($_POST['task_name'])) {
             $conn = new BddConnect();
             $conn->insertTask($_POST['task']);
             echo "Tâche ajoutée avec succès";
